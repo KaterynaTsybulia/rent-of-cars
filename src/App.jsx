@@ -6,10 +6,12 @@ import CarPage from "./pages/CarPage/CarPage";
 import NotFound from "./pages/NotFound/NotFound";
 
 import "./App.css";
+import Header from "./components/Header/Header";
 
 function App() {
   return (
     <>
+    <Header/>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/catalog" element={<CatalogPage />} />
