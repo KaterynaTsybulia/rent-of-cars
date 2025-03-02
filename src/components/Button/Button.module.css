@@ -1,0 +1,48 @@
+.btn {
+	display: inline-flex;
+	border-radius: 12px;
+	justify-content: center;
+	align-items: center;
+	width: 276px;
+	height: 44px;
+	font-weight: 600;
+	line-height: 1.25;
+	background-color: #3470ff;
+	color: #ffffff;
+	border: transparent;
+}
+
+.btn:hover {
+	background-color: #0b44cd;
+}
+
+.search {
+	align-self: end;
+	font-size: 16px;
+	transition: background-color 200ms ease-in;
+}
+.readmore {
+	padding: 12px 97px;
+	margin-top: 28px;
+}
+
+.send {
+	width: 156px;
+	margin: 0 auto;
+}
+
+.loadmore {
+	display: block;
+	margin: 0 auto;
+	padding: 12px 38px;
+	border: 1px solid #3470ff;
+	width: 156px;
+	color: #101828;
+	background-color: transparent;
+	transition: border-color 200ms ease-in;
+}
+
+.loadmore:hover {
+	border-color: #0b44cd;
+	background-color: transparent;
+}

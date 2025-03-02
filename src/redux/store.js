@@ -16,6 +16,7 @@ import carsReducer from './cars/slice.js';
 import filterReducer from './filter/slice.js';
 
 
+
 const persistFiltersConfig = {
   key: 'filters',  
   version: 1,

@@ -1,6 +1,6 @@
 body {
 	background-color: #fff;
-	color: #ffffff;
+	color: #101828;
 	font-family: "Manrope", sans-serif;
 }
 
@@ -31,13 +31,7 @@ a {
 	color: inherit;
 }
 button {
+	padding: 0;
+	color: inherit;
 	cursor: pointer;
-	background-color: #3470ff;
-	border: none;
-	color: #ffffff;
-}
-button:hover,
-button:focus,
-button:active {
-	background-color: #0b44cd;
 }

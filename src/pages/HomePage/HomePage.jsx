@@ -1,4 +1,6 @@
-import HomeBtn from "../../components/HomeBtn/HomeBtn";
+import { Link } from "react-router-dom";
+import Button from "../../components/Button/Button";
+
 import css from "./HomePage.module.css";
 
 export default function HomePage() {
@@ -9,7 +11,9 @@ export default function HomePage() {
 				<p className={css.text}>
 					Reliable and budget-friendly rentals for any journey
 				</p>
-				<HomeBtn to="/catalog">View Catalog</HomeBtn>
+				<Link to={`/catalog`}>
+					<Button text="View Catalog" />
+				</Link>
 			</div>
 		</div>
 	);

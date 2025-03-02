@@ -14,11 +14,23 @@ export const apiFetchCars = createAsyncThunk(
         params: {
           page,
           brand: filters.filters.brand,
-          rentalPrice: filters.filters.price,
-          minMileage: filters.filters.mileage.from,
-          maxMileage: filters.filters.mileage.to,
+          rentalPrice: filters.filters.rentalPrice,
+          // minMileage: filters.filters.minMileage,
+          // maxMileage: filters.filters.maxMileage,
         },
       });
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
+export const apiFetchCarInfo = createAsyncThunk(
+  'cars/fetchCar',
+  async (id, thunkAPI) => {
+    try {
+      const {data} = await axiosInstance.get(`/cars/${id}`);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);

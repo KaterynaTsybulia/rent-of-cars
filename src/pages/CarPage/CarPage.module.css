@@ -1,0 +1,17 @@
+.carPage {
+	margin: 84px 120px 104px;
+	display: flex;
+	gap: 72px;
+}
+
+.img {
+	width: 640px;
+
+	max-height: 512px;
+	border-radius: 19px;
+	overflow: hidden;
+	margin-bottom: 40px;
+}
+.container {
+	width: 488px;
+}

@@ -10,8 +10,8 @@ const carsSlice = createSlice({
       page: null,
       totalPages: null,
     },
-    brands: null,
-    loading: null,
+    brands: [],
+    loading: false,
     error: null,
   },
   extraReducers: builder => {
@@ -22,6 +22,13 @@ const carsSlice = createSlice({
       })
       .addCase(apiFetchCars.fulfilled, (state, action) => {
         state.loading = false;
+        state.carsPage.totalCars = action.payload.totalCars;
+        state.carsPage.page = Number(action.payload.page);
+        state.carsPage.totalPages = action.payload.totalPages;
+        state.carsPage.cars =
+          state.carsPage.page === 1
+            ? action.payload.cars
+            : [...state.carsPage.cars, ...action.payload.cars];
       })
       .addCase(apiFetchCars.rejected, (state, action) => {
         state.loading = false;
@@ -33,7 +40,7 @@ const carsSlice = createSlice({
       })
       .addCase(apiFetchBrands.fulfilled, (state, action) => {
         state.loading = false;
-        state.brands = action.payload.brands;
+        state.brands = action.payload;
       })
       .addCase(apiFetchBrands.rejected, (state, action) => {
         state.loading = false;

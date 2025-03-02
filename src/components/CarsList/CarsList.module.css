@@ -1,0 +1,9 @@
+.ulList {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	gap: 48px 32px;
+	margin-bottom: 80px;
+}
+
+

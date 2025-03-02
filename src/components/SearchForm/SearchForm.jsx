@@ -1,63 +1,82 @@
 import { Formik, Field, Form } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { changeFilters } from "../../redux/filter/slice";
-import { apiFetchCars } from "../../redux/cars/operations";
-import { selectAllBrands } from "../../redux/cars/selectors";
+import { changeFilters, INITIAL_STATE } from "../../redux/filter/slice";
+import { apiFetchBrands, apiFetchCars } from "../../redux/cars/operations";
+import { selectBrands, selectCars } from "../../redux/cars/selectors";
 import css from "./SearchForm.module.css";
+import { useEffect } from "react";
+import Button from "../Button/Button";
+import fixedPrices from "../../utils/filter.json";
+import Select from "../Select/Select";
 
-const initialValues = {
+const INITIAL_VALUE = {
 	brand: "",
-	price: "",
-	mileage: { from: "", to: "" },
+	rentalPrice: "",
+	minMileage: "",
+	maxMileage: "",
 };
 
-const SearchForm = ({ setPage }) => {
+const SearchForm = ({ page, setPage }) => {
 	const dispatch = useDispatch();
-	const brands = useSelector(selectAllBrands);
+	const cars = useSelector(selectCars);
+	const brands = useSelector(selectBrands);
+
+	useEffect(() => {
+		dispatch(apiFetchBrands());
+		dispatch(apiFetchCars());
+	}, [dispatch]);
 
 	const handleSubmit = (values) => {
 		setPage(1);
 		dispatch(changeFilters(values));
-
-		dispatch(apiFetchCars(1));
+		dispatch(apiFetchCars());
 	};
 
 	return (
-		<Formik initialValues={initialValues} onSubmit={handleSubmit}>
+		<Formik initialValues={INITIAL_VALUE} onSubmit={handleSubmit}>
 			<Form className={css.form}>
-				<div className={css.fieldWrapper}>
+				<div>
 					<label className={css.label} htmlFor="brand">
 						Car brand
 					</label>
 					<Field
 						id="brand"
 						name="brand"
+						component={Select}
 						options={brands}
 						placeholder="Choose a brand"
+						className={`${css.input} ${css.brand}`}
 					/>
 				</div>
 
-				<div className={css.fieldWrapper}>
+				<div>
 					<label className={css.label} htmlFor="price">
-						Price
+						Price/ 1 hour
 					</label>
-					<Field id="price" name="price" placeholder="Choose a price" />
+					<Field
+						id="price"
+						name="price"
+						component={Select}
+						options={fixedPrices}
+						placeholder="Choose a price"
+						className={`${css.input} ${css.price}`}
+					/>
 				</div>
 
-				<div className={css.fieldWrapper}>
+				<div>
 					<label className={css.label} htmlFor="mileage">
-						Mileage (km)
+						Car mileage / km
 					</label>
-					<div className={css.mileageInputWrapper}>
+					<div className={css.divKm}>
 						<Field
-							className={css.mileageInput}
+							className={css.input}
 							id="mileage.from"
 							name="mileage.from"
 							type="number"
 							placeholder="From"
 						/>
 						<Field
-							className={css.mileageInput}
+							className={css.input}
 							id="mileage.to"
 							name="mileage.to"
 							type="number"
@@ -65,10 +84,7 @@ const SearchForm = ({ setPage }) => {
 						/>
 					</div>
 				</div>
-
-				<button type="submit" className={css.submitButton}>
-					Search
-				</button>
+				<Button text="Search" value="search" />
 			</Form>
 		</Formik>
 	);
