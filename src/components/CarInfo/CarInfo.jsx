@@ -1,4 +1,4 @@
-// import { Icon } from "../Icon/Icon";
+import Icon from "../Icon/Icon";
 import css from "./CarInfo.module.css";
 
 export default function CarInfo({ carDetails }) {
@@ -19,7 +19,7 @@ export default function CarInfo({ carDetails }) {
 				<ul className={css.list}>
 					{rentalConditions.map((value, index) => (
 						<li key={index} className={css.item}>
-							{/* <Icon/> */}
+							<Icon id="icon-check-circle" className="svg" />
 							<p>{value}</p>
 						</li>
 					))}
@@ -29,19 +29,19 @@ export default function CarInfo({ carDetails }) {
 				<h2 className={css.title}>Car Specifications:</h2>
 				<ul className={css.list}>
 					<li className={css.item}>
-						{/* <Icon/> */}
+						<Icon id="icon-calendar" className="svg" />
 						<p>Year: {year}</p>
 					</li>
 					<li className={css.item}>
-						{/* <Icon/> */}
+						<Icon id="icon-car" className="svg" />
 						<p>Type: {type}</p>
 					</li>
 					<li className={css.item}>
-						{/* <Icon/> */}
+						<Icon id="icon-fuel-pump" className="svg" />
 						<p>Fuel Consumption: {fuelConsumption}</p>
 					</li>
 					<li className={css.item}>
-						{/* <Icon/> */}
+						<Icon id="icon-gear" className="svg" />
 						<p>Engine Size: {engineSize}</p>
 					</li>
 				</ul>
@@ -51,7 +51,7 @@ export default function CarInfo({ carDetails }) {
 				<ul className={css.list}>
 					{[...accessories, ...functionalities].map((value, index) => (
 						<li key={index} className={css.item}>
-							{/* <Icon/> */}
+							<Icon id="icon-check-circle" className="svg" />
 							<p>{value}</p>
 						</li>
 					))}

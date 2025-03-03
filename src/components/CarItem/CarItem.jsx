@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
+
 import Button from "../Button/Button";
+import FavouriteBtn from "../FavouriteBtn/FavouriteBtn";
+
 import { formatMileage, typeOfCar } from "../../utils/formatData";
-import Icon from "../Icon/Icon";
 
 import css from "./CarItem.module.css";
 
-const CarItem = ({ car }) => {
+const CarItem = ({ car, favourites }) => {
 	const {
 		brand,
 		model,
@@ -18,20 +20,13 @@ const CarItem = ({ car }) => {
 		img,
 		description,
 		id,
-		favourite,
 	} = car;
 
 	return (
 		<li className={css.liItem}>
 			<div className={css.wrapperCard}>
 				<img src={img} alt={description} className={css.img} />
-				{/* <FavouriteBtn id={id} favourite={favourite} /> */}
-				<Icon
-					id={"icon-favourite-no"}
-					width={16}
-					height={16}
-					className={css.iconHeart}
-				/>
+				<FavouriteBtn id={id} favourites={favourites} />
 				<div className={css.title}>
 					<p className={css.text}>
 						{brand} <span className={css.model}>{model}</span>, {year}

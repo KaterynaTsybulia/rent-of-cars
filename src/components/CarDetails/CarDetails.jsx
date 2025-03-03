@@ -1,4 +1,4 @@
-// import Icon from "../Icon/Icon";
+import Icon from "../Icon/Icon";
 import { formatAddress, formatMileage } from "../../utils/formatData";
 import css from "./CarDetails.module.css";
 
@@ -16,7 +16,7 @@ export default function CarDetails({ carDetails }) {
 			</div>
 			<div className={css.line}>
 				<p className={css.text}>
-					{/* <Icon id="icon-location" className="svg" /> */}
+					<Icon id="icon-location" className="svg" />
 					{formatAddress(address)}
 				</p>
 				<p className={css.text}>Mileage: {formatMileage(mileage)}</p>

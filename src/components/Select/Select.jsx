@@ -1,7 +1,8 @@
 import { useState } from "react";
-import css from "./Select.module.css";
 
-// import { Icon } from "../Icon/Icon";
+import Icon from "../Icon/Icon";
+
+import css from "./Select.module.css";
 
 const Select = ({ options, placeholder, form, field, id }) => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +24,9 @@ const Select = ({ options, placeholder, form, field, id }) => {
 				onClick={() => setIsOpen(!isOpen)}
 				onBlur={() => setIsOpen(false)}
 			/>
-			{/* <Icon/> */}
+			<div className={css.iconWrapper} onClick={() => setIsOpen(!isOpen)}>
+				<Icon id={isOpen ? "icon-up" : "icon-down"} className={css.icon} />
+			</div>
 			{isOpen && (
 				<ul
 					className={css.list}

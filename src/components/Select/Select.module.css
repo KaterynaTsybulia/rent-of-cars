@@ -14,7 +14,17 @@
 .input:focus {
 	outline: transparent;
 }
-.arrow {
+
+.iconWrapper {
+	position: absolute;
+	top: 50%;
+	right: 16px;
+	transform: translateY(-50%);
+	cursor: pointer;
+	z-index: 10;
+}
+
+.icon {
 	position: absolute;
 	top: 14px;
 	right: 16px;

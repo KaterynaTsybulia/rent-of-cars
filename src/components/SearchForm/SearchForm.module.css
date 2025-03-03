@@ -77,4 +77,11 @@
 
 .divKm .input::placeholder {
 	color: #101828;
+	opacity: 1;
+}
+
+.divKm .input::-webkit-outer-spin-button,
+.divKm .input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
 }
