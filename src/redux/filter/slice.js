@@ -15,7 +15,7 @@ const filtersSlice = createSlice({
   initialState: INITIAL_STATE,
   reducers: {
     changeFilter: (state, action) => {
-      state.filters = action.payload;
+      state.filters = { ...state.filters, ...action.payload };
     },
     addFavourite: (state, action) => {
       state.favourites.push(action.payload);
@@ -27,6 +27,7 @@ const filtersSlice = createSlice({
   },
 });
 
-export const { changeFilters, addFavourite, deleteFavourite } =filtersSlice.actions;
+
+export const { changeFilter, addFavourite, deleteFavourite } =filtersSlice.actions;
 
 export default filtersSlice.reducer;

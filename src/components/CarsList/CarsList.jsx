@@ -9,7 +9,7 @@ const CarsList = () => {
 	const carsFavourites = useSelector(selectCarsFavourites) || [];
 
 	if (!cars || !carsFavourites || cars.length === 0) {
-		return <p>Loading...</p>;
+		return <p>Nothing found matching your criteria</p>;
 	}
 
 	return (

@@ -4,7 +4,6 @@ import { formatMileage, typeOfCar } from "../../utils/formatData";
 import Icon from "../Icon/Icon";
 
 import css from "./CarItem.module.css";
-// import FavouriteBtn from "../FavouriteBtn/FavouriteBtn";
 
 const CarItem = ({ car }) => {
 	const {

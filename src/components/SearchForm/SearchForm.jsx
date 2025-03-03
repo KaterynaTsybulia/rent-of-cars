@@ -1,13 +1,16 @@
 import { Formik, Field, Form } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { changeFilters, INITIAL_STATE } from "../../redux/filter/slice";
+import { useEffect } from "react";
+
+import { changeFilter } from "../../redux/filter/slice";
 import { apiFetchBrands, apiFetchCars } from "../../redux/cars/operations";
 import { selectBrands, selectCars } from "../../redux/cars/selectors";
-import css from "./SearchForm.module.css";
-import { useEffect } from "react";
+
 import Button from "../Button/Button";
 import fixedPrices from "../../utils/filter.json";
 import Select from "../Select/Select";
+
+import css from "./SearchForm.module.css";
 
 const INITIAL_VALUE = {
 	brand: "",
@@ -18,18 +21,16 @@ const INITIAL_VALUE = {
 
 const SearchForm = ({ page, setPage }) => {
 	const dispatch = useDispatch();
-	const cars = useSelector(selectCars);
 	const brands = useSelector(selectBrands);
 
 	useEffect(() => {
 		dispatch(apiFetchBrands());
-		dispatch(apiFetchCars());
 	}, [dispatch]);
 
 	const handleSubmit = (values) => {
 		setPage(1);
-		dispatch(changeFilters(values));
-		dispatch(apiFetchCars());
+		dispatch(changeFilter(values));
+		dispatch(apiFetchCars(page));
 	};
 
 	return (
@@ -54,8 +55,8 @@ const SearchForm = ({ page, setPage }) => {
 						Price/ 1 hour
 					</label>
 					<Field
-						id="price"
-						name="price"
+						id="rentalPrice"
+						name="rentalPrice"
 						component={Select}
 						options={fixedPrices}
 						placeholder="Choose a price"
@@ -70,21 +71,21 @@ const SearchForm = ({ page, setPage }) => {
 					<div className={css.divKm}>
 						<Field
 							className={css.input}
-							id="mileage.from"
-							name="mileage.from"
+							id="minMileage"
+							name="minMileage"
 							type="number"
 							placeholder="From"
 						/>
 						<Field
 							className={css.input}
-							id="mileage.to"
-							name="mileage.to"
+							id="maxMileage"
+							name="maxMileage"
 							type="number"
 							placeholder="To"
 						/>
 					</div>
 				</div>
-				<Button text="Search" value="search" />
+				<Button text="Search" value="search" type="submit" />
 			</Form>
 		</Formik>
 	);

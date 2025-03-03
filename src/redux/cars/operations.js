@@ -15,8 +15,8 @@ export const apiFetchCars = createAsyncThunk(
           page,
           brand: filters.filters.brand,
           rentalPrice: filters.filters.rentalPrice,
-          // minMileage: filters.filters.minMileage,
-          // maxMileage: filters.filters.maxMileage,
+          minMileage: filters.filters.minMileage,
+          maxMileage: filters.filters.maxMileage,
         },
       });
       return data;

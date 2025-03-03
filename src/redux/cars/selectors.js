@@ -29,3 +29,4 @@ export const selectCarsFavourites = createSelector(
     return cars.filter(car => favourites.includes(car.id));
   }
 );
+
